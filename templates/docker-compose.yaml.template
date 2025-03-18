@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  app:
+    container_name: app
+    image: ${image}
+    restart: always
+    ports:
+      - 8080:8080 
+    command: ["${jdbc_url}", ${jdbc_user}, ${jdbc_password}]

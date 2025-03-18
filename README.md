@@ -52,12 +52,11 @@ watch curl -s http://<your_output_alb_external_ip>/api/status
 ```bash
 Every 2.0s: curl -s http://84.201.170.12/api/status                                                            kspoluektov-osx: Tue Mar  4 18:41:29 2025
 
-{select=2083 operations per second at 15:41:29.313765, host=4ef71af1c328, insert=150 operations per second at 15:41:29.978649, update=151 operations
-per second at 15:41:29.264949}
+{select=2083 operations per second at 15:41:29.313765, host=4ef71af1c328, insert=150 operations per second at 15:41:29.978649, update=151 operations per second at 15:41:29.264949}
 ```
 
 Смотрим статистику работы сервера приложений
- - скорость выборки по ключу - более 2 операций в секунду
+ - скорость выборки по ключу - более 2 тысяч операций в секунду
  - скорость вставки и изменения - около 150 
 
 Производим переключение мастера
@@ -69,8 +68,7 @@ yc postgres cluster start-failover --id <your_output_mdb_cluster_id>
 ```bash
 Every 2.0s: curl -s http://84.201.170.12/api/status                                                            kspoluektov-osx: Tue Mar  4 18:46:11 2025
 
-{select=261 operations per second at 15:46:11.357227, host=18bfc6d0e282, insert=138 operations per second at 15:46:10.335967, update=156 operations p
-er second at 15:46:10.975641}
+{select=261 operations per second at 15:46:11.357227, host=18bfc6d0e282, insert=138 operations per second at 15:46:10.335967, update=156 operations per second at 15:46:10.975641}
 ```
 
 В течение пяти минут функция отследит факт расхождения зоны между Instance Group и Managed Service и сменит зону для Instance Group (смену мы можем отследить в записях лог-группы - там появится сообщение "Instance group has been updated"). Параметры управления деплоем последней плавно пересоздадут ВМ без потери доступности и в скором времени мы увидим прежнюю скорость работы приложения с базой
@@ -78,6 +76,5 @@ er second at 15:46:10.975641}
 ```bash
 Every 2.0s: curl -s http://84.201.170.12/api/status                                                            kspoluektov-osx: Tue Mar  4 18:51:10 2025
 
-{select=2439 operations per second at 15:51:09.188837, host=a4eae84482dd, insert=126 operations per second at 15:51:09.979863, update=165 operations
-per second at 15:51:09.147909}
+{select=2439 operations per second at 15:51:09.188837, host=a4eae84482dd, insert=126 operations per second at 15:51:09.979863, update=165 operations per second at 15:51:09.147909}
 ```

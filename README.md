@@ -18,6 +18,7 @@
   - Функцию переключения зоны для Instance Group
   - Таймер, запускающий функцию из предыдущего пункта раз в 5 минут
 
+![Схема 1](svg/yc-ig-zone-switcher.drawio.svg)
 
 Для развертывания конфигурации нужно склонировать проект, положить в него файл terraform.tfvars с заполненными параметрами, которые соответствуют Вашему облаку 
 
@@ -52,7 +53,7 @@ watch curl -s http://<your_output_alb_external_ip>/api/status
 ```bash
 Every 2.0s: curl -s http://84.201.170.12/api/status                                                            kspoluektov-osx: Tue Mar  4 18:41:29 2025
 
-{select=2083 operations per second at 15:41:29.313765, host=4ef71af1c328, insert=150 operations per second at 15:41:29.978649, update=151 operations per second at 15:41:29.264949}
+{select=2083 operations per second at 15:41:29.313765, host=4ef71af1c328, insert=584 operations per second at 15:41:29.978649, update=653 operations per second at 15:41:29.264949}
 ```
 
 Смотрим статистику работы сервера приложений
@@ -76,5 +77,5 @@ Every 2.0s: curl -s http://84.201.170.12/api/status                             
 ```bash
 Every 2.0s: curl -s http://84.201.170.12/api/status                                                            kspoluektov-osx: Tue Mar  4 18:51:10 2025
 
-{select=2439 operations per second at 15:51:09.188837, host=a4eae84482dd, insert=126 operations per second at 15:51:09.979863, update=165 operations per second at 15:51:09.147909}
+{select=2439 operations per second at 15:51:09.188837, host=a4eae84482dd, insert=549 operations per second at 15:51:09.979863, update=636 operations per second at 15:51:09.147909}
 ```
